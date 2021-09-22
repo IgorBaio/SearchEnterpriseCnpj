@@ -63,11 +63,11 @@ export default function SubHeader({ history, title, children, user }) {
             </Typography>
 
             <Link
-              href={"https://github.com/IgorBaio"}
+              href={"https://github.com/IgorBaio/SearchEnterpriseCnpj"}
               align="center"
               className={styles.linkPageTitle}
             >
-              https://github.com/IgorBaio/apiEnterpriseCnpj
+              https://github.com/IgorBaio/SearchEnterpriseCnpj
             </Link>
           </Box>
         </Box>
