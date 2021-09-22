@@ -1,0 +1,43 @@
+{
+    "dataHeader": [
+      {
+        "id": "nome",
+        "label": "Nome",
+        "align": "left",
+        "width": "5%"
+      },
+      {
+        "id": "atividade",
+        "label": "Atividade principal",
+        "align": "left",
+        "width": "5%"
+      },
+      {
+        "id": "endereco",
+        "label": "endereço",
+        "align": "left",
+        "width": "20%"
+      },
+      {
+        "id": "razao",
+        "label": "Razão Social",
+        "align": "left",
+        "width": "10%"
+      }
+      ,
+      {
+        "id": "cnpj",
+        "label": "Cnpj",
+        "align": "left",
+        "width": "10%"
+      }
+    ],
+    "dataRows": [
+         {"id": "id",
+          "fullName": { "content": "full_name" },
+          "name": { "content": "name" },
+          "htmlUrl": { "content": "html_url" },
+          "language": { "content": "language" }
+        }
+    ]
+}

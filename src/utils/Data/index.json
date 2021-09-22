@@ -1,0 +1,93 @@
+[
+{
+    "atividade_principal": [
+      {
+        "text": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários",
+        "code": "74.90-1-04"
+      }
+    ],
+    "data_situacao": "19/02/2021",
+    "complemento": "ANDAR 11 CONJ 1102",
+    "tipo": "MATRIZ",
+    "nome": "DOCTUZ S.A.",
+    "uf": "SP",
+    "telefone": "(11) 4259-3509",
+    "email": "pablo.pires@doctuz.com.br",
+    "atividades_secundarias": [
+      {
+        "text": "Desenvolvimento e licenciamento de programas de computador não-customizáveis",
+        "code": "62.03-1-00"
+      },
+      {
+        "text": "Portais, provedores de conteúdo e outros serviços de informação na internet",
+        "code": "63.19-4-00"
+      },
+      {
+        "text": "Administração de cartões de crédito",
+        "code": "66.13-4-00"
+      },
+      {
+        "text": "Correspondentes de instituições financeiras",
+        "code": "66.19-3-02"
+      },
+      {
+        "text": "Outras atividades auxiliares dos serviços financeiros não especificadas anteriormente",
+        "code": "66.19-3-99"
+      },
+      {
+        "text": "Promoção de vendas",
+        "code": "73.19-0-02"
+      },
+      {
+        "text": "Marketing direto",
+        "code": "73.19-0-03"
+      },
+      {
+        "text": "Gestão de ativos intangíveis não-financeiros",
+        "code": "77.40-3-00"
+      },
+      {
+        "text": "Atividades de cobranças e informações cadastrais",
+        "code": "82.91-1-00"
+      },
+      {
+        "text": "Outras atividades de serviços prestados principalmente às empresas não especificadas anteriormente",
+        "code": "82.99-7-99"
+      }
+    ],
+    "qsa": [
+      {
+        "qual": "16-Presidente",
+        "nome": "PABLO PICASSO RESENDE PIRES"
+      },
+      {
+        "qual": "10-Diretor",
+        "nome": "LUCAS DE ABREU PINTO"
+      }
+    ],
+    "situacao": "ATIVA",
+    "bairro": "JARDIM PAULISTANO",
+    "logradouro": "AV BRIG FARIA LIMA",
+    "numero": "2369",
+    "cep": "01.452-922",
+    "municipio": "SAO PAULO",
+    "porte": "DEMAIS",
+    "abertura": "19/02/2021",
+    "natureza_juridica": "205-4 - Sociedade Anônima Fechada",
+    "cnpj": "40.910.562/0001-97",
+    "ultima_atualizacao": "2021-08-24T06:23:43.477Z",
+    "status": "OK",
+    "fantasia": "",
+    "efr": "",
+    "motivo_situacao": "",
+    "situacao_especial": "",
+    "data_situacao_especial": "",
+    "capital_social": "1910010.00",
+    "extra": {
+      
+    },
+    "billing": {
+      "free": true,
+      "database": true
+    }
+  }]
