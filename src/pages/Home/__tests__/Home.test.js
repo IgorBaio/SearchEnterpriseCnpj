@@ -51,29 +51,4 @@ describe("#TablesList", () => {
       expect(getByRole("textbox")).toBeVisible();
     });
   });
-  describe("#Component Functionality", () => {
-    let cnpjInput;
-    let cnpjTest;
-    beforeEach(() => {
-      cnpjInput = render(
-        <ProviderTest>
-          <Home />
-        </ProviderTest>
-      ).getByRole("textbox");
-      cnpjTest = "21607080000118";
-    });
-    afterEach(() => {
-      cnpjInput = null;
-      cnpjTest = null;
-    });
-    describe("#CNPJ input", () => {
-      it("should test cnpj input have an empty value", () => {
-        expect(cnpjInput).toHaveAttribute("value", "");
-      });
-      it("should test cnpj input have a value changed", () => {
-        userEvent.type(cnpjInput, cnpjTest);
-        expect(cnpjInput).toHaveAttribute("value", '21.607.080/0001-18');
-      });
-    });
-  });
 });
