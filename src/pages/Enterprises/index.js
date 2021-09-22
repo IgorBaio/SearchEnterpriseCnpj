@@ -96,10 +96,11 @@ const ReceivePayment = ({ history }) => {
       statusColor: "#FCDA45",
       statusTitle: "Atenção!",
       statusDescription:
-        "Qual ação deseja fazer com essa empresa no banco de dados?",
+        "Deseja remover esta empresa do banco de dados?",
       btn: (
         <CustomButton
           style={style.btn}
+          variant="outlined"
           onClick={() => {
             const result = dispatch(deleteEnterpriseOnDatabase([{idlocal}]));
 
@@ -108,28 +109,16 @@ const ReceivePayment = ({ history }) => {
               dispatch(getEnterpriseFromDatabase());
             }
           }}
-          textButton={
-            <Box
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <CancelIcon
-                style={{
-                  color: "red",
-                  "&:hover": {
-                    color: "darkred",
-                  },
-                  marginRight: 5,
-                }}
-              />
-              <Typography>REMOVER</Typography>
-            </Box>
-          }
+          textButton='SIM'
         />
       ),
+      revisar: (
+        <CustomButton
+          style={style.btn}
+          onClick={() => setShowActionConfirmationModal(false)}
+          textButton="NÃO"
+        />
+      )
     });
   };
 
@@ -253,10 +242,6 @@ const ReceivePayment = ({ history }) => {
                           ]}
                           dataRows={dataToTable}
                         />
-                        {/* ) : (
-                            <span className={styles.noReposMessage}>
-                              O usuário não possui repositórios públicos
-                            </span> */}
                       </Grid>
                     </Fade>
                 </BigCard>
@@ -266,12 +251,10 @@ const ReceivePayment = ({ history }) => {
           <ModalAlert
             resultTransition={resultTransition}
             isVisible={hasAlert?.show}
-            onDismiss={() => dispatch(toggleAlert(false, { message: "" }))}
           />
           <ModalAlert
             resultTransition={actionConfirmation}
             isVisible={showActionConfirmationModal}
-            onDismiss={() => setShowActionConfirmationModal(false)}
           />
         </Box>
       }

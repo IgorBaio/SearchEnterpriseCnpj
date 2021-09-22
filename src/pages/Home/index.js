@@ -86,11 +86,6 @@ const ReceivePayment = ({ history }) => {
   };
 
   //#region useEffects
-  // useEffect(() => {
-  //   if (state.cnpj) {
-  //     dispatch(getEnterprise(state.cnpj));
-  //   }
-  // }, [state.cnpj]);
   useEffect(() => {
     if (hasAlert?.show) {
       setResultTransition({
@@ -259,27 +254,6 @@ const ReceivePayment = ({ history }) => {
                         }
                       }}
                     />
-                    {/* <TextInput
-                            withMask
-                            mask="99.999.999/9999-99"
-                            form={Form}
-                            key={Form.values.cnpj}
-                            defaultValue={Form.values.cnpj}
-                            id="cnpj"
-                            disabled={true}
-                            className={styles.textInput}
-                            label={"CNPJ"}
-                            onBlur={(e) => {
-                              setState({
-                                ...state,
-                                cnpj: Form.values.cnpj,
-                              });
-                              e.persist = () => {};
-                              Form.handleChange(e);
-                            }}
-                            error={Form.errors.cnpj}
-                            placeholder="Digite..."
-                          /> */}
                   </Section>
                   <Box className={styles.boxButtons}>
                     <SearchButton
@@ -325,10 +299,6 @@ const ReceivePayment = ({ history }) => {
                           ]}
                           dataRows={dataToTable}
                         />
-                        {/* ) : (
-                            <span className={styles.noReposMessage}>
-                              O usuário não possui repositórios públicos
-                            </span> */}
                       </Grid>
                     </Fade>
                   )}
@@ -339,12 +309,10 @@ const ReceivePayment = ({ history }) => {
           <ModalAlert
             resultTransition={resultTransition}
             isVisible={hasAlert?.show}
-            onDismiss={() => dispatch(toggleAlert(false, { message: "" }))}
           />
           <ModalAlert
             resultTransition={actionConfirmation}
             isVisible={showActionConfirmationModal}
-            onDismiss={() => setShowActionConfirmationModal(false)}
           />
         </Box>
       }
