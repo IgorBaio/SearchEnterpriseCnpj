@@ -43,11 +43,10 @@ const ReceivePayment = ({ history }) => {
   const styles = useStyles();
   const [stepTwoVisible, setStepTwoVisible] = useState(false);
   const [stepThreeVisible, setStepThreeVisible] = useState(false);
-  const [state, setState] = useState({ cnpj: "", refresh: false });
+  const [state, setState] = useState({ result: [], refresh: false });
   const [dataToTable, setDataToTable] = useState();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user?.user);
-  const repos = useSelector((state) => state.user?.repos);
+  const enterprise = useSelector((state) => state.enterprise?.enterprise);
   const enterprises = useSelector((state) => state.enterprise?.enterprises);
   const hasAlert = useSelector((state) => state.alert);
   const [resultTransition, setResultTransition] = useState({
@@ -104,8 +103,11 @@ const ReceivePayment = ({ history }) => {
             const result = dispatch(deleteEnterpriseOnDatabase([{ idlocal }]));
 
             if (result) {
-              setShowActionConfirmationModal(false);
-              dispatch(getEnterpriseFromDatabase());
+              setTimeout(()=>{
+
+                setShowActionConfirmationModal(false);
+                dispatch(getEnterpriseFromDatabase());
+              },2000)
             }
           }}
           textButton="SIM"
@@ -145,7 +147,7 @@ const ReceivePayment = ({ history }) => {
     dispatch(getEnterpriseFromDatabase());
   }, []);
   useEffect(() => {
-    if (enterprises && enterprises.length > 0) {
+    if (enterprises) {
       const dataToTableAux = [];
       enterprises?.forEach((item) => {
         dataToTableAux.push({
@@ -202,15 +204,16 @@ const ReceivePayment = ({ history }) => {
       setDataToTable([]);
       setStepThreeVisible(false);
     }
-  }, [enterprises, state?.refresh]);
+  }, [enterprises, state?.refresh, state?.result]);
   //#endregion
 
   return (
     <PageView
       hasHeader
+      history={history}
       title="Search Enterprises By CNPJ"
       subHeader={
-        <SubHeader title="IgorBaio" history={history} user={user || null} />
+        <SubHeader title="IgorBaio" history={history} user={null} />
       }
       stylePage={{ display: "flex" }}
       pageContent={
@@ -227,41 +230,52 @@ const ReceivePayment = ({ history }) => {
                 <BigCard minHeight={600}>
                   <Fade in={true} timeout={500}>
                     <Grid container item xs={12} style={{ marginTop: 0 }}>
-                      <TablesList
-                        dataHeader={[
-                          {
-                            id: "name",
-                            label: "Nome",
-                            align: "left",
-                            width: "5%",
-                          },
-                          {
-                            id: "ativadadePrincipal",
-                            label: "Atividade Principal",
-                            align: "left",
-                            width: "5%",
-                          },
-                          {
-                            id: "endereco",
-                            label: "Endereço",
-                            align: "left",
-                            width: "20%",
-                          },
-                          {
-                            id: "razao",
-                            label: "Razão social",
-                            align: "left",
-                            width: "10%",
-                          },
-                          {
-                            id: "cnpj",
-                            label: "CNPJ",
-                            align: "left",
-                            width: "10%",
-                          },
-                        ]}
-                        dataRows={dataToTable}
-                      />
+                      {
+                        dataToTable && dataToTable.length > 0 ? (
+
+                          <TablesList
+                            key={enterprises}
+                            dataHeader={[
+                              {
+                                id: "name",
+                                label: "Nome",
+                                align: "left",
+                                width: "5%",
+                              },
+                              {
+                                id: "ativadadePrincipal",
+                                label: "Atividade Principal",
+                                align: "left",
+                                width: "5%",
+                              },
+                              {
+                                id: "endereco",
+                                label: "Endereço",
+                                align: "left",
+                                width: "20%",
+                              },
+                              {
+                                id: "razao",
+                                label: "Razão social",
+                                align: "left",
+                                width: "10%",
+                              },
+                              {
+                                id: "cnpj",
+                                label: "CNPJ",
+                                align: "left",
+                                width: "10%",
+                              },
+                            ]}
+                            dataRows={dataToTable}
+                          />
+                        ) :
+                         (
+                            <span className={styles.noReposMessage}>
+                              Não possui empresas cadastradas
+                            </span> 
+                         )
+                      }
                     </Grid>
                   </Fade>
                 </BigCard>

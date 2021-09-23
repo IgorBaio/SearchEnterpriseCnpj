@@ -10,7 +10,7 @@ import {
   ENTERPRISE_GET_DATA_STARRED_FAIL,
   ENTERPRISE_GET_DATA_DATABASE_SUCCESS,
   ENTERPRISE_GET_DATA_DATABASE,
-  ENTERPRISE_GET_DATA_DATABASE_FAIL
+  ENTERPRISE_GET_DATA_DATABASE_FAIL,
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -18,7 +18,7 @@ const INITIAL_STATE = {
   repos: null,
   starred: null,
   loading: false,
-  enterprises: []
+  enterprises: [],
 };
 
 const enterpriseReducer = (state = INITIAL_STATE, action) => {
@@ -55,7 +55,7 @@ const enterpriseReducer = (state = INITIAL_STATE, action) => {
       };
 
     case ENTERPRISE_GET_DATA_DATABASE_SUCCESS:
-    return {
+      return {
         ...state,
         enterprises: action.payload,
         loading: false,
