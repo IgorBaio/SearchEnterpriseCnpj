@@ -18,6 +18,21 @@ const useStyles = makeStyles(
       marginBottom: "5%",
       alignSelf: "center",
     },
+    registerSucess: {
+      color: colors.green,
+      marginLeft: 5,
+      fontSize: 16,
+      fontWeight: "800",
+    },
+    checkIcon: {
+      color: colors.green,
+    },
+    registerSucessArea: {
+      display: "flex",
+      flex: 1,
+      marginBottom: 30,
+      justifyContent: "center",
+    },
     repos: {
       margin: 20,
       backgroundColor: colors.white,

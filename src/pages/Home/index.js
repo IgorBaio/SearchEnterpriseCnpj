@@ -8,6 +8,7 @@ import SearchButton from "./components/SearchButton";
 import BigCard from "../../components/BigCard";
 import Section from "../../components/Section";
 import TablesList from "../../components/TablesList";
+import CheckIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import SubHeader from "../../components/SubHeader";
@@ -38,7 +39,8 @@ const ReceivePayment = ({ history }) => {
   const [stepTwoVisible, setStepTwoVisible] = useState(false);
   const [stepThreeVisible, setStepThreeVisible] = useState(false);
   const [state, setState] = useState({ cnpj: "", refresh: false });
-  const [dataToTable, setDataToTable] = useState();
+  const [dataToTable, setDataToTable] = useState([]);
+  const [isSuccessfull, setIsSuccessfull] = useState(false);
   const dispatch = useDispatch();
   const enterprise = useSelector((state) => state.enterprise?.enterprise);
   const hasAlert = useSelector((state) => state.alert);
@@ -105,6 +107,16 @@ const ReceivePayment = ({ history }) => {
       });
     }
   }, [hasAlert]);
+
+
+  useEffect(() => {
+    if (isSuccessfull) {
+      setTimeout(() => {
+        setIsSuccessfull(false);
+      }, 5000);
+    }
+
+  }, [isSuccessfull]);
 
   useEffect(() => {
     if (enterprise && enterprise.length > 0) {
@@ -187,7 +199,10 @@ const ReceivePayment = ({ history }) => {
                       );
                       if (result) {
                         setTimeout(
-                          () => setShowActionConfirmationModal(false),
+                          () => {
+                            setShowActionConfirmationModal(false)
+                            setIsSuccessfull(true)
+                          },
                           1500
                         );
                       }
@@ -223,6 +238,7 @@ const ReceivePayment = ({ history }) => {
   return (
     <PageView
       hasHeader
+      history={history}
       title="Search Enterprises By CNPJ"
       subHeader={<SubHeader title="IgorBaio" history={history} user={null} />}
       stylePage={{ display: "flex" }}
@@ -253,7 +269,6 @@ const ReceivePayment = ({ history }) => {
                       form={Form}
                       onChange={Form.handleChange}
                       defaultValue={Form.values.cnpj}
-                      // value={Form.values.cnpj}
                       id="cnpj"
                       error={Form.errors.cnpj}
                       onBlur={(e) => {
@@ -278,6 +293,15 @@ const ReceivePayment = ({ history }) => {
                     />
                   </Section>
                   <Box className={styles.boxButtons}>
+                    {isSuccessfull && (
+                      <Grid item className={styles.registerSucessArea}>
+                        <CheckIcon className={styles.checkIcon} />
+                        <Typography className={styles.registerSucess}>
+                          {" "}
+                          Empresa cadastrada com sucesso!
+                        </Typography>
+                      </Grid>
+                    )}
                     <SearchButton
                       mode={"editing"}
                       dispatch={dispatch}

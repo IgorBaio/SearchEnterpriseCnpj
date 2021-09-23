@@ -11,6 +11,7 @@ const colors = {
   oldBurgundy: "#433246",
   line: "#E5E5E5",
   perfectRed: "#BE1E1E",
+  green: '#27AE60'
 };
 
 export default colors;
