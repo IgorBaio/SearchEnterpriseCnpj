@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
-import { Grid, Fade, Box, Link, Button } from "@material-ui/core";
+import { Grid, Fade, Box, Link, Button, Typography } from "@material-ui/core";
+import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
 import { Formik } from "formik";
 import PageView from "../../components/PageView";
 import SearchButton from "./components/SearchButton";
@@ -21,6 +22,7 @@ import {
 import { style } from "../../utils/commonStyles";
 import CustomButton from "../../components/Button";
 import DATA from "../../utils/Data";
+import colors from "../../utils/colors";
 const FormValues = {
   initialValues: {
     cnpj: "",
@@ -115,7 +117,27 @@ const ReceivePayment = ({ history }) => {
           name: {
             content: (
               <Button onClick={() => setShowActionConfirmationModal(true)}>
-                {item?.nome_fantasia || "N/A"}
+                <Box
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  <AddCircleOutline
+                    style={{
+                      color: colors.darkMode,
+                      "&:hover": {
+                        color: colors.darkModeSecondary,
+                      },
+                      marginRight: 5,
+                      alignSelf: "center",
+                    }}
+                  />
+                  <Typography style={{ textDecorationLine: "underline" }}>
+                    {item?.nome_fantasia || "N/A"}
+                  </Typography>
+                </Box>
               </Button>
             ),
           },

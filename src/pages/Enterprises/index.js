@@ -95,21 +95,20 @@ const ReceivePayment = ({ history }) => {
       status: "alertFailed",
       statusColor: "#FCDA45",
       statusTitle: "Atenção!",
-      statusDescription:
-        "Deseja remover esta empresa do banco de dados?",
+      statusDescription: "Deseja remover esta empresa do banco de dados?",
       btn: (
         <CustomButton
           style={style.btn}
           variant="outlined"
           onClick={() => {
-            const result = dispatch(deleteEnterpriseOnDatabase([{idlocal}]));
+            const result = dispatch(deleteEnterpriseOnDatabase([{ idlocal }]));
 
             if (result) {
               setShowActionConfirmationModal(false);
               dispatch(getEnterpriseFromDatabase());
             }
           }}
-          textButton='SIM'
+          textButton="SIM"
         />
       ),
       revisar: (
@@ -118,7 +117,7 @@ const ReceivePayment = ({ history }) => {
           onClick={() => setShowActionConfirmationModal(false)}
           textButton="NÃO"
         />
-      )
+      ),
     });
   };
 
@@ -155,25 +154,46 @@ const ReceivePayment = ({ history }) => {
           ativadadePrincipal: { content: item.atividade_primaria },
           name: {
             content: (
-              <Box style={{ display: "flex", flexDirection: "row" }}>
-                <Button
-                  className={styles.button}
-                  onClick={() =>
-                    removeItem(item.idlocal.replace(/[\.\-\/]/g, ""))
-                  }
+              <Button
+                className={styles.button}
+                onClick={() =>
+                  removeItem(item.idlocal.replace(/[\.\-\/]/g, ""))
+                }
+              >
+                <Box
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                  }}
                 >
+                  <CancelIcon
+                    style={{
+                      color: "red",
+                      "&:hover": {
+                        color: "darkred",
+                      },
+                      marginRight: 5,
+                      alignSelf: "center",
+                    }}
+                  />
                   <Typography style={{ textDecorationLine: "underline" }}>
                     {item.nome}
                   </Typography>
-                </Button>
-              </Box>
+                </Box>
+              </Button>
             ),
           },
           endereco: {
             content: item.endereco,
           },
           razao: { content: item.razao_social },
-          cnpj: { content: item.idlocal.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5") },
+          cnpj: {
+            content: item.idlocal.replace(
+              /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+              "$1.$2.$3/$4-$5"
+            ),
+          },
         });
       });
       setDataToTable(dataToTableAux);
@@ -205,45 +225,45 @@ const ReceivePayment = ({ history }) => {
             {(Form) => (
               <>
                 <BigCard minHeight={600}>
-                    <Fade in={true} timeout={500}>
-                      <Grid container item xs={12} style={{ marginTop: 0 }}>
-                        <TablesList
-                          dataHeader={[
-                            {
-                              id: "name",
-                              label: "Nome",
-                              align: "left",
-                              width: "5%",
-                            },
-                            {
-                              id: "ativadadePrincipal",
-                              label: "Atividade Principal",
-                              align: "left",
-                              width: "5%",
-                            },
-                            {
-                              id: "endereco",
-                              label: "Endereço",
-                              align: "left",
-                              width: "20%",
-                            },
-                            {
-                              id: "razao",
-                              label: "Razão social",
-                              align: "left",
-                              width: "10%",
-                            },
-                            {
-                              id: "cnpj",
-                              label: "CNPJ",
-                              align: "left",
-                              width: "10%",
-                            },
-                          ]}
-                          dataRows={dataToTable}
-                        />
-                      </Grid>
-                    </Fade>
+                  <Fade in={true} timeout={500}>
+                    <Grid container item xs={12} style={{ marginTop: 0 }}>
+                      <TablesList
+                        dataHeader={[
+                          {
+                            id: "name",
+                            label: "Nome",
+                            align: "left",
+                            width: "5%",
+                          },
+                          {
+                            id: "ativadadePrincipal",
+                            label: "Atividade Principal",
+                            align: "left",
+                            width: "5%",
+                          },
+                          {
+                            id: "endereco",
+                            label: "Endereço",
+                            align: "left",
+                            width: "20%",
+                          },
+                          {
+                            id: "razao",
+                            label: "Razão social",
+                            align: "left",
+                            width: "10%",
+                          },
+                          {
+                            id: "cnpj",
+                            label: "CNPJ",
+                            align: "left",
+                            width: "10%",
+                          },
+                        ]}
+                        dataRows={dataToTable}
+                      />
+                    </Grid>
+                  </Fade>
                 </BigCard>
               </>
             )}
