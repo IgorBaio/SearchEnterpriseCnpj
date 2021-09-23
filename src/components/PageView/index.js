@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import {} from "../../store/actions";
 import { makeStyles } from "@material-ui/core/styles";
+import ROUTES from "../../utils/routes";
 
 const useStyless = makeStyles({
   root: {
@@ -25,7 +26,8 @@ export default function PageView({
   hasHeader = true,
   subHeader = null,
   pageContent = null,
-  title
+  title,
+  history,
 }) {
   const styles = useStyles();
   const [progress, setProgress] = React.useState(0);
@@ -35,8 +37,7 @@ export default function PageView({
 
   useEffect(() => {
     const isLoading =
-      globalState.form?.loading ||
-      globalState.enterprise?.loading 
+      globalState.form?.loading || globalState.enterprise?.loading;
 
     if (isLoading) {
       setProgress(0);
@@ -77,13 +78,14 @@ export default function PageView({
             <Container maxWidth="lg">
               <Box className={styles.headerTop}>
                 <Box className={styles.infoUserWrapper}>
-                  <Box className={styles.infoUser} >
+                  <Box
+                    onClick={() => history.push(ROUTES.home)}
+                    className={styles.infoUser}
+                  >
                     <Typography align="center" className={styles.pageTitle}>
                       {title}
                     </Typography>
-                    
                   </Box>
-                 
                 </Box>
               </Box>
               <Box className={styles.subHeader}>
